@@ -1,13 +1,8 @@
 from django.urls import path
-from .views import PaymentSchedulerView
-from .views import PaymentSchedulerViewUseId
+from .views import PaymentSchedulerViewSet
+from rest_framework import routers
 
 app_name = "payment_scheduler"
-urlpatterns = [
-    path("", PaymentSchedulerView.as_view(), name="payment_scheduler-list"),
-    path(
-        "<int:pk>/",
-        PaymentSchedulerViewUseId.as_view(),
-        name="payment_scheduler-details",
-    ),
-]
+router = routers.SimpleRouter()
+router.register(r"", PaymentSchedulerViewSet, basename="payment_scheduler")
+urlpatterns = router.urls

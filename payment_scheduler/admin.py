@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import PaymentScheduler
+
+admin.site.register(PaymentScheduler)

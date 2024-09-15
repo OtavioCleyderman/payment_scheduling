@@ -41,7 +41,9 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    "rest_framework",
+]
 
 LOCAL_APPS = [
     "payment_scheduler.apps.PaymentSchedulerConfig",
@@ -119,6 +121,8 @@ TIME_ZONE = "America/SAO_PAULO"
 USE_I18N = True
 
 USE_TZ = True
+
+DATE_FORMATE = "Y-m-d"
 
 
 # Static files (CSS, JavaScript, Images)

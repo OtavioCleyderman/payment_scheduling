@@ -148,15 +148,30 @@ ou cURL para garantir que a API está funcionando conforme esperado.
 # Testes via postman
 
 **1 - Criar agendamento de pagamento:**
+
+<img width="728" alt="create" src="https://github.com/user-attachments/assets/6f282765-8628-4a64-9e3e-01a775bf6edb">
+
 **2 - Listar todos os agendamentos:**
+
+![list](https://github.com/user-attachments/assets/3c22e95a-716f-4897-83de-516d67772530)
+
 **3 - Consultar agendamento de pagamento:**
+
+![consult](https://github.com/user-attachments/assets/cb58a463-3510-452e-a11f-98956dc8d6a5)
+
 **4 - Deletar agendamento de pagamento:**
 
+![delete](https://github.com/user-attachments/assets/9b794c9d-3a76-4da0-9800-afd35980f07e)
+
 # Testes no django
+
 Integração: 1
+
 Unitários: 9
+
 Total de testes: 10
 
+<img width="266" alt="all tests django" src="https://github.com/user-attachments/assets/46821782-b227-4fd0-bbae-2778b5aeb85e">
 
 # Estrutura e stack utilizada
 

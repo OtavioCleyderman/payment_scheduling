@@ -1,12 +1,13 @@
 from rest_framework import serializers
 from .models import PaymentScheduler
+from decimal import Decimal
 
 
 class PaymentSchedulerSerializer(serializers.ModelSerializer):
     valor_pagamento = serializers.DecimalField(
         max_digits=10,
         decimal_places=2,
-        min_value=0.01,
+        min_value=Decimal("0.01"),
     )
 
     class Meta:

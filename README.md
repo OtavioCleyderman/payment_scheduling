@@ -145,6 +145,19 @@ ou cURL para garantir que a API está funcionando conforme esperado.
     - O valor de pagamento deve ser igual ou superior a 0.01.
     - Não dá para criar dois agendamentos iguais, que contenham todos os campos iguais.
 
+# Testes via postman
+
+**1 - Criar agendamento de pagamento:**
+**2 - Listar todos os agendamentos:**
+**3 - Consultar agendamento de pagamento:**
+**4 - Deletar agendamento de pagamento:**
+
+# Testes no django
+Integração: 1
+Unitários: 9
+Total de testes: 10
+
+
 # Estrutura e stack utilizada
 
 **Stack:** Python e Django

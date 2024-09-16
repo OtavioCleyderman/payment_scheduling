@@ -4,6 +4,7 @@ from django.urls import reverse
 from ..models import PaymentScheduler
 import random
 from datetime import datetime, timedelta
+from decimal import Decimal
 
 
 class PaymentSchedulerViewsTestCase(APITestCase):
@@ -62,8 +63,10 @@ class PaymentSchedulerViewsTestCase(APITestCase):
         response = self.client.post(self.list_url, payload, format="json")
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         created_object = PaymentScheduler.objects.get(id=response.data["id"])
-        valor_pagamento_convertido_decimal = created_object.valor_pagamento / 100
-        self.assertEqual(valor_pagamento_convertido_decimal, payload["valor_pagamento"])
+        self.assertEqual(
+            created_object.valor_pagamento,
+            int(round(Decimal(payload["valor_pagamento"]) * 100)),
+        )
         self.assertEqual(
             created_object.permite_recorrencia, payload["permite_recorrencia"]
         )

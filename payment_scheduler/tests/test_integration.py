@@ -4,6 +4,7 @@ from rest_framework.test import APITestCase
 from ..models import PaymentScheduler
 import random
 from datetime import datetime, timedelta
+from decimal import Decimal
 
 
 class PaymentSchedulerIntegrationTestCase(APITestCase):
@@ -42,4 +43,7 @@ class PaymentSchedulerIntegrationTestCase(APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["data_pagamento"], payload["data_pagamento"])
-        self.assertEqual(response.data["valor_pagamento"], payload["valor_pagamento"])
+        self.assertEqual(
+            response.data["valor_pagamento"],
+            int(round(Decimal(payload["valor_pagamento"]) * 100)),
+        )

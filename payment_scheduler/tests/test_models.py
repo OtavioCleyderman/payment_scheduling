@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.core.exceptions import ValidationError
 from ..models import PaymentScheduler
 from datetime import date
+from decimal import Decimal
 
 
 class PaymentSchedulerModelTestCase(TestCase):

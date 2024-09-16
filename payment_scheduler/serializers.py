@@ -4,11 +4,7 @@ from decimal import Decimal
 
 
 class PaymentSchedulerSerializer(serializers.ModelSerializer):
-    valor_pagamento = serializers.DecimalField(
-        max_digits=10,
-        decimal_places=2,
-        min_value=Decimal("0.01"),
-    )
+    valor_pagamento = serializers.IntegerField(min_value=1)
 
     class Meta:
         model = PaymentScheduler
@@ -25,14 +21,14 @@ class PaymentSchedulerSerializer(serializers.ModelSerializer):
         ]
 
     def to_internal_value(self, data):
-        valores_recebidos = super().to_internal_value(data)
-        if "valor_pagamento" in valores_recebidos:
-            valores_recebidos["valor_pagamento"] = int(
-                round(valores_recebidos["valor_pagamento"] * 100)
-            )
-        return valores_recebidos
+        if "valor_pagamento" in data and isinstance(
+            data["valor_pagamento"], (float, Decimal)
+        ):
+            data["valor_pagamento"] = int(round(Decimal(data["valor_pagamento"]) * 100))
+        return super().to_internal_value(data)
 
-    def to_representation(self, instance):
-        valores_salvos = super().to_representation(instance)
-        valores_salvos["valor_pagamento"] = float(instance.valor_pagamento) / 100
-        return valores_salvos
+    # Caso optem por retornar como decimal também. Só descomentar o trecho abaixo
+    # def to_representation(self, instance):
+    #     valores_salvos = super().to_representation(instance)
+    #     valores_salvos["valor_pagamento"] = float(instance.valor_pagamento) / 100
+    #     return valores_salvos

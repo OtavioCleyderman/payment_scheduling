@@ -136,10 +136,14 @@ ou cURL para garantir que a API está funcionando conforme esperado.
 
 - [@OtavioCleyderman](https://github.com/OtavioCleyderman)
 
-# Observação: 
+# Observações: 
  - Seguindo o teste, realizei a conversão do decimal inserido para inteiro, tanto para salvar no banco e para retorno do banco em consultas. No entanto, deixei pronto para que, se necessário, o salvamento no banco continue sendo em inteiro mas os retornos das consultas possa ser retornado o valor em decimal, assim como o usuário informou. 
  - Incluído testes no projeto, testes unitários e de integração. 
  - Também realizado teste no postman para confirmar que tudo está saindo como proposto.
+ - Realizei algumas validações a mais:
+    - Se selecionar a data atual ou anterior não conseguimos criar o agendamento, precisa ser data futura.
+    - O valor de pagamento deve ser igual ou superior a 0.01.
+    - Não dá para criar dois agendamentos iguais, que contenham todos os campos iguais.
 
 # Estrutura e stack utilizada
 
@@ -192,7 +196,9 @@ Após isso, crie seu ambiente virtual para o projeto e instale as dependências:
     .\.venv\Scripts\activate (Windows) / source .venv/bin/activate (Linux/MacOs)
     pip install -r requirements.txt 
 ```
-Após as dependências do projeto serem instaladas, execute o projeto:
+
+Após as dependências do projeto serem instaladas, configure as variáveis de ambiente/local necessárias para executar o projeto.
+Após isso, execute a aplicação:
 ```
     python .\manage.py runserver 
 ```

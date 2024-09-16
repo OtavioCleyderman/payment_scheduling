@@ -11,30 +11,17 @@ class PaymentSchedulerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PaymentScheduler
-        fields = "__all__"
-
-    def check_exists(self, data):
-        """
-        Verifica se já existe um agendamento com a mesma combinação de campos.
-        """
-        if PaymentScheduler.objects.filter(
-            data_pagamento=data.get("data_pagamento"),
-            agencia=data.get("agencia"),
-            conta=data.get("conta"),
-            valor_pagamento=data.get("valor_pagamento"),
-            permite_recorrencia=data.get("permite_recorrencia"),
-            quantidade_recorrencia=data.get("quantidade_recorrencia"),
-            intervalo_recorrencia=data.get("intervalo_recorrencia"),
-            status_recorrencia=data.get("status_recorrencia"),
-        ).exists():
-            raise serializers.ValidationError(
-                {
-                    "non_field_errors": [
-                        "Já existe um agendamento com esta combinação de campos."
-                    ]
-                }
-            )
-        return data
+        fields = [
+            "id",
+            "data_pagamento",
+            "permite_recorrencia",
+            "quantidade_recorrencia",
+            "intervalo_recorrencia",
+            "status_recorrencia",
+            "agencia",
+            "conta",
+            "valor_pagamento",
+        ]
 
     def to_internal_value(self, data):
         valores_recebidos = super().to_internal_value(data)

@@ -10,7 +10,7 @@ class PaymentSchedulerViewsTestCase(APITestCase):
     def generate_random_payload(self):
         start_date = datetime.now()
         end_date = start_date + timedelta(days=365)
-        random_date = start_date + (end_date - start_date) * random.random()
+        random_date = start_date + (end_date - start_date) * random.uniform(0.01, 1)
         return {
             "data_pagamento": random_date.strftime("%Y-%m-%d"),
             "permite_recorrencia": random.choice([True, False]),
@@ -70,7 +70,8 @@ class PaymentSchedulerViewsTestCase(APITestCase):
         self.assertEqual(response["Content-Type"], "application/json")
 
     def test_create_invalid_payment_scheduler(self):
-        response = self.client.post(self.list_url, self.invalid_payload, format="json")
+        payload = self.invalid_payload
+        response = self.client.post(self.list_url, payload, format="json")
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertIn("valor_pagamento", response.data)
         self.assertEqual(response["Content-Type"], "application/json")

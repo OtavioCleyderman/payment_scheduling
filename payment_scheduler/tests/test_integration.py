@@ -5,26 +5,6 @@ from ..models import PaymentScheduler
 import random
 from datetime import datetime, timedelta
 
-# "id": 1,
-# "data_pagamento": "2024-09-16",
-# "permite_recorrencia": true,
-# "quantidade_recorrencia": 6,
-# "intervalo_recorrencia": 30,
-# "status_recorrencia": "Em andamento",
-# "agencia": 1,
-# "conta": 2,
-# "valor_pagamento": 258.98
-
-# "id": 1,
-# "valor_pagamento": 258.98,
-# "data_pagamento": "2024-09-16",
-# "permite_recorrencia": true,
-# "quantidade_recorrencia": 6,
-# "intervalo_recorrencia": 30,
-# "status_recorrencia": "Em andamento",
-# "agencia": 1,
-# "conta": 2
-
 
 class PaymentSchedulerIntegrationTestCase(APITestCase):
     def generate_random_payload(self):
